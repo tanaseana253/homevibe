@@ -46,10 +46,3 @@ class User(AbstractUser):
     def __str__(self):
         return f'{self.username} {self.email}'
 
-class UserHistory(models.Model):
-    message = models.TextField(max_length=300)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.message
