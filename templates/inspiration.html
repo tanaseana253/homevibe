@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% include 'navbar.html' %}
+{% include 'photo_list.html' %}
+{% load static %}
+
+
+{% block title %} Inspiration {% endblock %}
+
+{% block content %}
+    <body>
+        {% include 'navbar.html' %}
+
+
+        <div class="page_inspiration_container">
+            <div class="selection_container">
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>Room</option>
+                    <option value="1">Living</option>
+                    <option value="2">Bedroom</option>
+                    <option value="3">Bathroom</option>
+                </select>
+
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>Style</option>
+                    <option value="1">Modern</option>
+                    <option value="2">Minimalist</option>
+                    <option value="3">Classic</option>
+                </select>
+
+                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <option selected>Color</option>
+                    <option value="1">White</option>
+                    <option value="2">Black</option>
+                    <option value="3">Green</option>
+                    <option value="3">Blue</option>
+                    <option value="3">Yellow</option>
+                    <option value="3">Red</option>
+                </select>
+            </div>
+
+        {% include 'photo_list.html' %}
+
+        </div>
+    </body>
+{% endblock %}

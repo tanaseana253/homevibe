@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Sign up {% endblock %}
+
+{% block content %}
+    <div class="page_signup_container">
+        <div class="page_signup_left">
+            <a href="{% url 'homepage' %}">
+               <img src="{% static 'images/logo1.png' %}" alt="Homepage">
+            </a>
+            <div class="container">
+                <form method="post" action="" class="form_basic">
+                    {% csrf_token %}
+                    <div class="mb-3">
+{#                        <label for="exampleInputEmail1" class="form-label">Email address</label>#}
+                            {{ form.as_p }}
+{#                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">#}
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+{#                    <div class="mb-3">#}
+{#                        <label for="exampleInputPassword1" class="form-label1">Password</label>#}
+{#                        <input type="password" class="form-control" id="exampleInputPassword1">#}
+{#                    </div>#}
+{#                    <div class="mb-3">#}
+{#                        <label for="exampleInputPassword2" class="form-label2">Confirm password</label>#}
+{#                        <input type="password" class="form-control" id="exampleInputPassword2">#}
+{#                    </div>#}
+                      <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      </div>
+                    <div class="container_vertical_center">
+                        <button type="submit" class="btn btn-primary">Sign up</button>
+                    </div>
+                </form>
+            </div>
+            <div class="container_bottom">
+                <p>Already have an account? <a href="{% url 'login' %}" class="button_link btn btn-link">Sign in</a></p>
+            </div>
+        </div>
+
+        <div class="page_signup_right">
+        </div>
+    </div>
+{% endblock %}

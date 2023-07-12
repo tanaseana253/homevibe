@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% include 'navbar.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <body>
+       <div class="background">
+           {% include 'navbar.html' %}
+           <div class="main_content">
+               <div class="hero_text">
+                   <p class="title"> HOMEVIBE </p>
+                   <p class="subtitle"> Find your dream home and we’ll show you <br>local shops that can make it real </p>
+                   <div class="cta_div"><a class="btn btn-primary" href="{% url 'inspiration' %}" role="button">Let's start</a></div>
+               </div>
+
+           </div>
+       </div>
+    </body>
+{% endblock %}
+
