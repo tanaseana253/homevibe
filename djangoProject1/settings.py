@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-+clu=(m&5oh)vz%7i%+obgni2olyg@0#@3114l*@!6eg4%%@#b
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'homevibe.pythonanywhere.com'
+    'homevibe.pythonanywhere.com',
     '127.0.0.1',
 ]
 
