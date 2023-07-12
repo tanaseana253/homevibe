@@ -1,12 +1,8 @@
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.views import LoginView
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView, ListView
-from django.urls import reverse_lazy, reverse
-from homevibe.models import User, UserHistory, Photo
-from homevibe.forms import SignupForm, SigninForm
-from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from homevibe.models import User, Photo
+from homevibe.forms import SignupForm
+
 
 
 class HomeTemplateView(TemplateView):

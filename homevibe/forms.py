@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.forms import TextInput, EmailInput
 from homevibe.models import User
 
 
