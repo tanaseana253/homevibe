@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% include 'navbar.html' %}
-{% include 'photo_list.html' %}
 {% load static %}
 
 
@@ -10,36 +9,106 @@
     <body>
         {% include 'navbar.html' %}
 
-
         <div class="page_inspiration_container">
             <div class="selection_container">
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Room</option>
-                    <option value="1">Living</option>
-                    <option value="2">Bedroom</option>
-                    <option value="3">Bathroom</option>
+                <select class="form-select form-select-lg mb-3" id="room-filter" aria-label=".form-select-lg example">
+                    <option value="" selected>Choose a room</option>
+                    <option value="Living room">Living room</option>
+                    <option value="Bedroom">Bedroom</option>
+                    <option value="Bathroom"disabled>Bathroom</option>
+                    <option value="Kitchen"disabled>Kitchen</option>
                 </select>
 
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Style</option>
-                    <option value="1">Modern</option>
-                    <option value="2">Minimalist</option>
-                    <option value="3">Classic</option>
+                <select class="form-select form-select-lg mb-3" id="style-filter" aria-label=".form-select-lg example">
+                    <option value="" selected>Choose a style</option>
+                    <option value="Modern">Modern</option>
+                    <option value="Minimalist">Minimalist</option>
+                    <option value="Classic">Classic</option>
                 </select>
 
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Color</option>
-                    <option value="1">White</option>
-                    <option value="2">Black</option>
-                    <option value="3">Green</option>
-                    <option value="3">Blue</option>
-                    <option value="3">Yellow</option>
-                    <option value="3">Red</option>
+                <select class="form-select form-select-lg mb-3" id="color-filter" aria-label=".form-select-lg example">
+                    <option value="" selected>Choose a color</option>
+                    <option value="White">White</option>
+                    <option value="Black">Black</option>
+                    <option value="Grey">Grey</option>
+                    <option value="Green">Green</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Yellow"disabled>Yellow</option>
+                    <option value="Red"disabled>Red</option>
                 </select>
             </div>
+        </div>
 
         {% include 'photo_list.html' %}
 
-        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const roomSelect = document.getElementById('room-filter');
+                const styleSelect = document.getElementById('style-filter');
+                const colorSelect = document.getElementById('color-filter');
+                const photoItems = document.querySelectorAll('.photo-item');
+
+                function updatePhotos() {
+                    const selectedRoom = roomSelect.value;
+                    const selectedStyle = styleSelect.value;
+                    const selectedColor = colorSelect.value;
+
+                    photoItems.forEach(photo => {
+                        const photoRoom = photo.getAttribute('data-room');
+                        const photoStyle = photo.getAttribute('data-style');
+                        const photoColor = photo.getAttribute('data-color');
+
+                        const displayPhoto =
+                            (!selectedRoom || photoRoom === selectedRoom) &&
+                            (!selectedStyle || photoStyle === selectedStyle) &&
+                            (!selectedColor || photoColor === selectedColor);
+
+                        photo.style.display = displayPhoto ? 'block' : 'none';
+                    });
+
+                    localStorage.setItem('selectedRoom', selectedRoom);
+                    localStorage.setItem('selectedStyle', selectedStyle);
+                    localStorage.setItem('selectedColor', selectedColor);
+                }
+
+                function restoreFilterSelection() {
+                    // Retrieve selected filter values from localStorage
+                    const savedRoom = localStorage.getItem('selectedRoom');
+                    const savedStyle = localStorage.getItem('selectedStyle');
+                    const savedColor = localStorage.getItem('selectedColor');
+
+                    // Set the selected values in the form-select inputs
+                    roomSelect.value = savedRoom;
+                    styleSelect.value = savedStyle;
+                    colorSelect.value = savedColor;
+
+                    // Trigger the updatePhotos function to apply filters
+                    updatePhotos();
+                }
+
+                restoreFilterSelection();
+
+                if (localStorage.getItem('selectedRoom') || localStorage.getItem('selectedStyle') || localStorage.getItem('selectedColor')) {
+                updatePhotos();
+                }
+
+                roomSelect.addEventListener('change', updatePhotos);
+                styleSelect.addEventListener('change', updatePhotos);
+                colorSelect.addEventListener('change', updatePhotos);
+
+                const homepageButton = document.getElementById('homepage-button');
+                homepageButton.addEventListener('click', function () {
+                    roomSelect.selectedIndex = 0;
+                    styleSelect.selectedIndex = 0;
+                    colorSelect.selectedIndex = 0;
+                    updatePhotos();
+                    }
+                );
+
+
+            });
+        </script>
+
     </body>
 {% endblock %}
+

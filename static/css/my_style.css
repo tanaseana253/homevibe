@@ -64,9 +64,11 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 100dvh;
-    padding-bottom: 200px;
-    padding-top: 200px;
+    /*height: 100%;*/
+    /*padding-bottom: 200px;*/
+    margin-top: 200px;
+
+
 }
 
 /*.hero_text p {*/
@@ -79,6 +81,7 @@ body{
     flex-direction: column;
     justify-content: right;
 
+
 }
 
 .subtitle {
@@ -87,14 +90,20 @@ body{
     font-family: Inter;
     font-size: 16pt;
     font-weight: lighter;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    user-select: none;
 }
 
 .title {
     font-family: GT, Roboto;
+    text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.5);
     color: white;
     font-size:100pt ;
     font-weight: bolder;
     height: fit-content;
+    pointer-events: none;
+    user-select: none;
 
 }
 .btn.btn-primary {
@@ -114,7 +123,7 @@ body{
 .cta_div {
     display: flex;
     justify-content: center;
-    padding: 20px;
+    margin: 20px;
 }
 
 .form-group {
@@ -213,13 +222,43 @@ body{
 }
 
 .selection_container {
-    padding-top:72px;
+    padding: 72px 64px;
+    padding-bottom:32px;
     display: flex;
     justify-content: center;
+    gap: 24px;
 }
 
 .inspiration-photo-container{
     display: flex;
+}
+
+
+.all-photo-container {
+    padding-left: 64px;
+    padding-right: 64px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 32px; /* Adjust the gap between images */
+    grid-auto-rows: minmax(100px, auto);
+    grid-auto-flow: dense;
+}
+
+
+.photo-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.interactive {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    z-index: -10;
+
 }
 
 

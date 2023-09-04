@@ -8,4 +8,6 @@ admin.site.register(User)
 admin.site.register(Product)
 admin.site.register(ProductCategory)
 admin.site.register(Color)
+admin.site.register(Style)
+admin.site.register(Room)
 

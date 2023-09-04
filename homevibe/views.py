@@ -1,8 +1,9 @@
+from django.http import request
+from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView, ListView
 from django.urls import reverse_lazy
-from homevibe.models import User, Photo
+from homevibe.models import User, Photo, Style, Color, ProductCategory
 from homevibe.forms import SignupForm
-
 
 
 class HomeTemplateView(TemplateView):
@@ -23,20 +24,19 @@ class SignupView(CreateView):
 
 class InspirationTemplateView(TemplateView):
     template_name = 'inspiration.html'
-    #
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['photos'] = Photo.objects.all()
-    #     return context
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['photos'] = Photo.objects.all()
+        return context
+
 
 class PhotoListView(ListView):
     model = Photo
     template_name = 'photo_list.html'
     context_object_name = 'photos'
 
-# def photo_list(request):
-#     photos = Photo.objects.all()
-#     return render(request, 'photo_list.html', {'photos': photos})
+
 
 
 
