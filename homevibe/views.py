@@ -2,7 +2,7 @@ from django.http import request
 from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView, ListView
 from django.urls import reverse_lazy
-from homevibe.models import User, Photo, Style, Color, ProductCategory
+from homevibe.models import User, Photo
 from homevibe.forms import SignupForm
 
 
@@ -14,13 +14,6 @@ class SignupView(CreateView):
     form_class = SignupForm
     template_name = 'sign_up.html'
     success_url = reverse_lazy('login')
-
-    # def form_valid(self, form):
-    #     response = super().form_valid(form)
-    #     user = form.save(commit=False)
-    #     user.username = user.email
-    #     user.save()
-    #     return response
 
 class InspirationTemplateView(TemplateView):
     template_name = 'inspiration.html'
