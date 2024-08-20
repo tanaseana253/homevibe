@@ -31,7 +31,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'homevibe.pythonanywhere.com',
     '127.0.0.1',
-    'homevibe-5027d04ce74f.herokuapp.com/',
+    'homevibe-5027d04ce74f.herokuapp.com',
 ]
 
 
@@ -151,4 +151,4 @@ AUTH_USER_MODEL = 'homevibe.User'
 if os.getcwd() =='/app':
     DEBUG = False
 
-# /images/rooms/'
+# testing
